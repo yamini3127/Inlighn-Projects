@@ -25,7 +25,7 @@ def connect_ssh(host, port, user, password):
     try:
         s = paramiko.SSHClient()
         s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        s.login(host, user, password, port=port)
+        s.connect(hostname=host, username=user, password=password, port=port)
         return s
     except Exception as e:
         print(Fore.RED + f"[!] Error connecting to {host}")
@@ -34,9 +34,12 @@ def connect_ssh(host, port, user, password):
 
 # Sending a command to execute
 def send_command(session, cmd):
-    session.sendline(cmd)
-    session.prompt()
-    return session.before
+#    session.sendline(cmd)
+#    session.prompt()
+#    return session.before
+    stdin, stdout, stderr = session.exec_command(cmd)
+    return stdout.read() + stderr.read()
+
 
 # Running through the loop to traverse the complete clients
 def botnet_command(command):
