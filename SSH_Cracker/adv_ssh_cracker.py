@@ -85,8 +85,8 @@ def main():
     parser.add_argument("-u", "--user", help="Single username to use.")
     parser.add_argument("-U", "--userlist", help="File that contains username list in each line.")
     parser.add_argument("--generate", action="store_true", help="Generate passwords on the fly.")
-    parser.add_argument("--min-length", type=int, help="Minimum length of generated passwords", default=1)
-    parser.add_argument("--max-length", type=int, help="Maximum length of generated passwords", default=4)
+    parser.add_argument("--min-length", type=int, help="Minimum length of generated passwords", default=8)
+    parser.add_argument("--max-length", type=int, help="Maximum length of generated passwords", default=8)
     parser.add_argument("--chars", type=str, help="Characters to use for password generation", default=string.ascii_lowercase + string.digits)
     parser.add_argument("--threads", type=int, help="Number of threads to use", default=4)
 
