@@ -6,6 +6,7 @@ import sys
 import argparse
 import itertools
 import string 
+import time
 
 q = queue.Queue()
 
@@ -32,6 +33,7 @@ def connect_ftp(host, port, q):
         except Exception as e:
             print(f"{Fore.RED}[-] Error: {str(e)}")
         finally:
+            time.sleep(1.5)
             q.task_done()
 
 def load_lines(file_path):
